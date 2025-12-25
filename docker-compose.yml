@@ -1,0 +1,26 @@
+services:
+  # --- Base de Datos: PostgreSQL ---
+  postgres-db:
+    image: postgres:15-alpine
+    container_name: movilroom-db
+    restart: always
+    environment:
+      POSTGRES_USER: admin_scor
+      POSTGRES_PASSWORD: admin_sc0r25 # Cámbiala si quieres
+      POSTGRES_DB: movilroom_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data # Esto guarda los datos en tu carpeta local
+
+  # --- Opcional: Interfaz Web para ver la BD (pgAdmin) ---
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: movilroom-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@movilroom.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres-db
