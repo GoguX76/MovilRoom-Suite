@@ -2,6 +2,9 @@
 .DS_Store
 Thumbs.db
 
+# --- CARPETAS ---
+MovilRoom-Obsidian
+
 # --- VS CODE / IDEs ---
 .vscode/
 .idea/
